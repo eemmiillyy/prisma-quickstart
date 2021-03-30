@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  # postgres://prisma:prisma@localhost:5438
+  postgres:
+    image: postgres:10
+    container_name: prisma-cquickstart
+    restart: always
+    environment:
+      - POSTGRES_USER=prisma
+      - POSTGRES_PASSWORD=prisma
+    ports:
+      - "5438:5432"

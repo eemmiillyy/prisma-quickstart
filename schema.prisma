@@ -33,11 +33,7 @@ model Project {
   displayName String
 
   ownerId String
-  owner   User   @relation(fields: [ownerId], references: [id])
 
-  database    Database?           @relation
-  repository  Repository?         @relation
-  memberships ProjectMembership[]
 
   @@unique([ownerId, handle])
 }
