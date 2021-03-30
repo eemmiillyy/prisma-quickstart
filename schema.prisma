@@ -1,0 +1,43 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["createMany"]
+}
+
+enum ModelKind {
+  project
+  projectMembership
+  user
+  account
+  database
+  repository
+}
+
+// Project
+
+enum ProjectRole {
+  admin
+  developer
+  collaborator
+  viewer
+}
+
+model Project {
+  kind        ModelKind @default(project)
+  id          String    @id @default(cuid())
+  handle      String
+  displayName String
+
+  ownerId String
+  owner   User   @relation(fields: [ownerId], references: [id])
+
+  database    Database?           @relation
+  repository  Repository?         @relation
+  memberships ProjectMembership[]
+
+  @@unique([ownerId, handle])
+}
