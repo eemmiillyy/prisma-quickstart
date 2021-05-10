@@ -37,3 +37,9 @@ model Project {
 
   @@unique([ownerId, handle])
 }
+
+enum newEnum {
+  one
+  two
+  three
+}
