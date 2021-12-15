@@ -31,7 +31,7 @@ model Project {
   id          String    @id @default(cuid())
   handle      String
   displayName String
-
+  json        Json
   ownerId String
 
 
