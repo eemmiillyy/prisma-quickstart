@@ -43,4 +43,6 @@ enum newEnum {
   two
   three
   four
+  five
 }
+
